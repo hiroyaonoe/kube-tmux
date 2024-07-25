@@ -166,7 +166,7 @@ kube_tmux() {
     KUBE_TMUX+="#[fg=${3}]${KUBE_TMUX_NAMESPACE}"
   fi
 
-  echo "(${KUBE_TMUX})"
+  echo "#[fg=white](${KUBE_TMUX}#[fg=white])"
 }
 
 kube_tmux "$@"
