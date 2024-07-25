@@ -18,6 +18,7 @@
 # limitations under the License.
 
 # Default values for the plugin
+KUBE_TMUX_ENABLE="${KUBE_TMUX_ENABLE:-true}"
 KUBE_TMUX_BINARY="${KUBE_TMUX_BINARY:-kubectl}"
 KUBE_TMUX_SYMBOL_ENABLE="${KUBE_TMUX_SYMBOL_ENABLE:-true}"
 KUBE_TMUX_SYMBOL_DEFAULT="${KUBE_TMUX_SYMBOL_DEFAULT:-\u2388 }"
@@ -142,6 +143,10 @@ _kube_tmux_format_context_ns() {
 
 kube_tmux() {
   _kube_tmux_update_cache
+
+  if [[ "${KUBE_TMUX_ENABLE}" == false ]]; then
+    return
+  fi
 
   local KUBE_TMUX
 
